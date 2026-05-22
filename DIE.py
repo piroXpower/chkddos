@@ -94,7 +94,7 @@ async def attack(update: Update, context: CallbackContext):
         return
 
     if len(args) != 3:
-        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /attack <ip> <port> <duration>*", parse_mode='Markdown')
+        await context.bot.send_message(chat_id=chat_id, text="*⚠️ Usage: /run <ip> <port> <duration>*", parse_mode='Markdown')
         return
 
     ip, port, duration = args
@@ -102,7 +102,7 @@ async def attack(update: Update, context: CallbackContext):
         f"*⚔️ Attack Launched! ⚔️*\n"
         f"*🎯 Target: {ip}:{port}*\n"
         f"*🕒 Duration: {duration} seconds*\n"
-        f"*🔥 Mayhem initiated! Let the battlefield ignite! 💥*"
+        f"*🌚 Ma chod diye bhaia ji😂 💥*"
     ), parse_mode='Markdown')
 
     asyncio.create_task(run_attack(chat_id, ip, port, duration, context))
